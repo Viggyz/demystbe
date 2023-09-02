@@ -1,5 +1,9 @@
 from rest_framework import serializers
 
+class ProviderSerializer(serializers.Serializer):
+    provider = serializers.CharField()
+    accessToken = serializers.CharField()
+
 class SheetSerializer(serializers.Serializer):
     year = serializers.IntegerField()
     month = serializers.IntegerField()
@@ -9,5 +13,5 @@ class SheetSerializer(serializers.Serializer):
 class BusinessDetailsSerializer(serializers.Serializer):
     name = serializers.CharField()
     year = serializers.CharField()
-    profitOrLoss = serializers.IntegerField()
+    balance_sheet = SheetSerializer(many=True)
     loan_amount = serializers.FloatField()
